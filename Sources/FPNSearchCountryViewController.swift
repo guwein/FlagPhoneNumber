@@ -135,7 +135,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 
 		if let searchText = searchController.searchBar.text, searchText.count > 0 {
 			results = list!.filter({(item: FPNCountry) -> Bool in
-				if item.name.lowercased().range(of: searchText.lowercased()) != nil {
+				if item.name.range(of: searchText, options: [.diacriticInsensitive, .caseInsensitive]) != nil {
 					return true
 				} else if item.code.rawValue.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
